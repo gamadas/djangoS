@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ERMA Data List</title>
+    <link rel="stylesheet" href="{% static "/css/mystyle.css" %}"/>
+  </head>
+  <body>
+    <h1>Current Access Data</h1>
+    <!-- {{ insert_key }} -->
+
+    <div class="hoge">
+
+      {% if acc_record %}
+        <table>
+          <thead>
+            <th>Site Name</th>
+            <th>Data Accessed</th>
+          </thead>
+
+          {% for acc in acc_record %}
+          <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+          <p>NO RECORD FOUND</p>
+        {% endif %}
+
+
+    </div>
+
+
+
+
+
+
+
+  </body>
+</html>

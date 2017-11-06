@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "erma_app/base.html" %}
+{% load staticfiles %}
+
+  {% block body_block %}
+      {% if acc_record %}
+        <table>
+          <thead>
+            <th>Site Name</th>
+            <th>Data Accessed</th>
+          </thead>
+
+          {% for acc in acc_record %}
+          <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+          <p>NO RECORD FOUND</p>
+        {% endif %}
+    {% endblock %}

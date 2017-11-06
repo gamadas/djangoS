@@ -1,0 +1,27 @@
+{% extends 'erma_app/base.html' %}
+{% load staticfiles %}
+
+
+
+{% block body_block %}
+
+<div class="jumbotron">
+  {% if registered %}
+    <h1>Thank You for Your Registeration</h1>
+  {% else %}
+    <h1>Register NOW!</h1>
+    <h3>Fill out the form below: </h3>
+
+    <form class="" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" name="" value="Register">
+
+    </form>
+  {% endif %}
+
+</div>
+
+
+{% endblock %}
