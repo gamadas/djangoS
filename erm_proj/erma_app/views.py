@@ -11,6 +11,18 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
+# for Class Based View
+from django.views.generic import View, TemplateView
+
+# Class Based View Sample
+class IndexView(TemplateView):
+    template_name = 'erma_app/index.html'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['insert_key'] = 'HOGEHOGE INSERTED'
+        return context
+
 # Create your views here.
 
 def index(request):

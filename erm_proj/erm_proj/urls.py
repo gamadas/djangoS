@@ -20,7 +20,7 @@ from django.conf.urls import include
 from erma_app import views
 
 urlpatterns = [
-    url(r'^$',views.index,name='index'),
+    url(r'^$',views.IndexView.as_view(),name='index'),
     url(r'^erma_app/', include('erma_app.urls')),  # include the appropriate apps' url patterns
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$',views.user_logout,name='logout'),
