@@ -1,10 +1,65 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
   <head>
     <meta charset="utf-8">
-    <title> </title>
+    <title>旧州道</title>
+
+    <!-- bootstrap -->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Medium Style editor -->
+      <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <!-- My Custom CSS -->
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <!-- Google Font -->
+      <link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic.css" rel="stylesheet" />
+
   </head>
   <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-default custom-font custom-navbar">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand bigbrand" href="{% url 'blog:post_list' %}">Home</a></li>
+            <li><a  href="{% url 'blog:about' %}">About</a></li>
+            <li><a  href="https://www.github.com">Github</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'blog:post_new' %}">記事作成</a></li>
+            <li><a href="{% url 'blog:post_draft_list' %}">ドラフト</a></li>
+            <li><a href="{% url 'blog:logout' %}">ログアウト</a></li>
+            <li><a>ようこそ {{ user.name }}</a></li>
+
+            {% else %}
+              <li><a calss="nav navbar-right" href="{% url 'blog:login' %}"><span class="glyphicon glyphicon-uer"></span></a></li>
+            {% endif %}
+          </ul>
+        </div>
+    </nav>
+
+    <!-- Content Block -->
+
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="blog_posts">
+            {% block content %}
+            {% endblock%}
+          </div>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
