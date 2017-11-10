@@ -14,14 +14,14 @@ class Post(models.Model):
     # publised fields shuold be blan and null while creating. It must be set after publish dicision
 
     def publish(self):
-        self.published_date = timezon.now()
+        self.published_date = timezone.now()
         self.save()
 
     def approve_comments(self):
         return self.comments.filter(approved_comment=True)
 
     def get_absolute_url(self):
-        return reverse('post_detail',kwargs={'pk':self.pk})
+        return reverse('blog:post_detail',kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.title
@@ -39,7 +39,7 @@ class Comment(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse('post_list')
+        return reverse('blog:post_list')
 
     def __str__(self):
         return self.text

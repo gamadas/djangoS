@@ -1,8 +1,8 @@
 {% extends "blog/base.html "%}
 
-{% block body_block %}
+{% block content %}
 
-  <h1 class="posttitle loader"></h1>
+  <h1 class="posttitle"></h1>
   {% if post.bublished_date %}
     <div class="date postdate">
       {{ post.pubulished_date }}
@@ -30,7 +30,7 @@
     {% for commnet in post.comments.all %}
     <br>
       {% if user.is_authenticated or comment.approved_comment %}
-        {{ comment.created_date }}
+        {{ comment.create_date }}
           {% if not comment.approved_comment %}
             <a class="btn btn-primary" href="{% url 'blog:comment_remove' pk=comment.pk %}">
               <span class="glyphicon glyphicon-remove"></span>
