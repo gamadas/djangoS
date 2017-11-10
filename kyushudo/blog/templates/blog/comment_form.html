@@ -1,4 +1,13 @@
 {% extends "blog/base.html "%}
-{% block body_block %}
+{% block content %}
+  <h1>コメント作成</h1>
+
+  <form class="post-form" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="button" class="save btn btn-default">コメントする</button>
+  </form>
+
+  <script>var editor = new MediumEditor('.editable');</script>
 
 {% endblock %}

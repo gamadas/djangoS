@@ -8,6 +8,15 @@ h1{
   left:calc(50% - 130px);
 }
 
+/*OUR CUSTOM STYLE*/
+
+.centerstage{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/*LOADER FUNCTIONALITY*/
 
 .loader {
   position:fixed;
